@@ -1,27 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Chart from 'react-google-charts';
 import { TiCogOutline } from 'react-icons/ti';
 // import { isToday } from 'date-fns';
 
 import { useService } from '../../provider/CreatedServicesContext';
 
-import { Container } from './styles';
+import { Container, Input } from './styles';
 
 const Inspections: React.FC = () => {
   const service = useService();
+  const [inputselectDate, setInputSelectDate] = useState(false);
 
-  const today = "2021-02-19 16:00:00"
+  const today = "2021-02-19";
+  const [selectedDay, setSelectedDay] = useState(today); //new Date()
 
   const data = service
     // .filter(day => isToday(new Date(day.created_at)))
-    .filter(day => day.created_at === today)
+    .filter(day => day.created_at === selectedDay + " 16:00:00")
     .filter(day => day.service === 'inspecao');
 
   return (
     <Container>
       <header>
         <h3>Inspeções<span>Status do dia</span></h3>
-        <TiCogOutline size={30} style={{ margin: 10 }} />
+
+        <Input
+          type="date"
+          selectDay={inputselectDate}
+          value={selectedDay}
+          onChange={e => setSelectedDay(e.target.value)}
+        />
+
+        <TiCogOutline
+          size={30}
+          style={{ margin: 10 }}
+          onClick={e => setInputSelectDate(!inputselectDate)}
+        />
       </header>
 
       <div>

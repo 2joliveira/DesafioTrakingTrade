@@ -1,4 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+interface InputProp {
+  selectDay: boolean;
+}
 
 export const Container = styled.div`
   min-width: 354px;
@@ -38,6 +42,12 @@ export const Container = styled.div`
         color: #B0B0B0;
       }
     }
+    
+    svg {
+      &:hover {
+        color: #3333;
+      }
+    }
   }
   footer {
     display: flex;
@@ -68,5 +78,16 @@ export const Container = styled.div`
         justify-content: space-between;
       }
     }
+  }
+`;
+
+export const Input = styled.input<InputProp>`
+  display: none;
+
+  ${(prop) =>
+    !!prop.selectDay &&
+    css`
+      display: flex;
+    `
   }
 `;
