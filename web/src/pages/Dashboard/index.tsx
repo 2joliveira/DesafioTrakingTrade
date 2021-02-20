@@ -20,6 +20,7 @@ import {
   DashboardActionPlans,
   Th,
   ActionsplanUpdates,
+  Input,
   InspectionsDetails,
 } from './styles';
 
@@ -38,6 +39,8 @@ const Dashboard: React.FC = () => {
   const [actionPlanState, setActionPlanState] = useState('criado');
   const [inspectionsSearch, setInspectionsSearch] = useState('');
   const [actionPlansSearch, setActionPlansSearch] = useState('');
+  const [selectDate, setSelectDate] = useState(false);
+  const [selectedDay, setSelectedDay] = useState('');
 
 
   const inspectionsData = service
@@ -46,6 +49,7 @@ const Dashboard: React.FC = () => {
 
   const actionPlansData = service
     .filter(serviceType => serviceType.service === 'planodeacao')
+    .filter(day => day.updated_at.includes(selectedDay))
     .filter(serviceUser => serviceUser.user.toUpperCase().includes(actionPlansSearch.toUpperCase()));
 
 
@@ -154,7 +158,18 @@ const Dashboard: React.FC = () => {
               <header>
                 <h3>Planos de ação <span>atualizações</span></h3>
 
-                <TiCogOutline size={30} style={{ margin: 10 }} />
+                <Input
+                  type="date"
+                  selectDate={selectDate}
+                  value={selectedDay}
+                  onChange={e => setSelectedDay(e.target.value)}
+                />
+
+                <TiCogOutline
+                  size={30}
+                  style={{ margin: 10 }}
+                  onClick={e => setSelectDate(!selectDate)}
+                />
               </header>
 
               <input

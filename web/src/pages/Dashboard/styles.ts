@@ -5,6 +5,10 @@ interface IPropsContainer {
   statusColor?: string;
 }
 
+interface InputProp {
+  selectDate: boolean;
+}
+
 export const Container = styled.main`
   display: flex;
 
@@ -79,6 +83,12 @@ export const ActionsplanUpdates = styled.div`
         color: #B0B0B0;
       }
     }
+
+    svg {
+      &:hover {
+        color: #3333;
+      }
+    }
   }
 
   select {
@@ -150,6 +160,17 @@ export const ActionsplanUpdates = styled.div`
         text-align: left;
       }
     }
+  }
+`;
+
+export const Input = styled.input<InputProp>`
+  display: none;
+
+  ${(prop) =>
+    prop.selectDate &&
+    css`
+      display: flex;
+    `
   }
 `;
 
