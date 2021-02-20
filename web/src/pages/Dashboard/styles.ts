@@ -114,6 +114,16 @@ export const ActionsplanUpdates = styled.div`
     border: 1px solid #EBEBEB;
     box-sizing: border-box;
     border-radius: 100px;
+    padding-left: 20px;
+    
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+    
+    &:hover {
+      background-color: ${shade(0.1, '#FAFAFA')};
+    }
   }
 
   table {
@@ -126,6 +136,7 @@ export const ActionsplanUpdates = styled.div`
     padding: 3px 10px;
 
     td {
+      width: 250px;
       font-size: 12px;
       line-height: 18px;
       text-align: right;
@@ -137,8 +148,6 @@ export const ActionsplanUpdates = styled.div`
         line-height: 18px;
         color: #B0B0B0;
         text-align: left;
-
-        padding-right: 70px;
       }
     }
   }
@@ -248,7 +257,6 @@ export const InspectionsDetails = styled.div`
     font-weight: 500;
     font-size: 12px;
     line-height: 25px;
-    color: #999999;
 
     &:focus {
       outline: none;
@@ -256,7 +264,7 @@ export const InspectionsDetails = styled.div`
     }
 
     &:hover {
-      background-color: ${shade(0.2, '#FAFAFA')};
+      background-color: ${shade(0.1, '#FAFAFA')};
     }
   }
 

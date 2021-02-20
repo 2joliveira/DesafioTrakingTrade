@@ -6,7 +6,6 @@ import { TiCogOutline } from 'react-icons/ti';
 
 import { useService } from '../../provider/CreatedServicesContext';
 
-
 import SideBar from '../../components/SideBar';
 import EventHistory from '../../components/EventHistory';
 import Actionsplan from '../../components/ActionPlans';
@@ -37,9 +36,18 @@ const Dashboard: React.FC = () => {
   const service = useService();
   const [selectedPeriod, setSelectedPeriod] = useState('diario');
   const [actionPlanState, setActionPlanState] = useState('criado');
+  const [inspectionsSearch, setInspectionsSearch] = useState('');
+  const [actionPlansSearch, setActionPlansSearch] = useState('');
 
-  const inspectionsData = service.filter(serviceType => serviceType.service === 'inspecao');
-  const actionPlansData = service.filter(serviceType => serviceType.service === 'planodeacao');
+
+  const inspectionsData = service
+    .filter(serviceType => serviceType.service === 'inspecao')
+    .filter(serviceUser => serviceUser.user.toUpperCase().includes(inspectionsSearch.toUpperCase()));
+
+  const actionPlansData = service
+    .filter(serviceType => serviceType.service === 'planodeacao')
+    .filter(serviceUser => serviceUser.user.toUpperCase().includes(actionPlansSearch.toUpperCase()));
+
 
   let inspectionsDataShow: IService[] = [];
   let actionPlansDataShow: IService[] = [];
@@ -104,7 +112,12 @@ const Dashboard: React.FC = () => {
                 </select>
               </header>
 
-              <input type="text" placeholder="Pesquise" />
+              <input
+                type="text"
+                placeholder="Pesquise"
+                value={inspectionsSearch}
+                onChange={e => setInspectionsSearch(e.target.value)}
+              />
 
               <Scrollbars style={{ margin: '20px' }}>
                 <table>
@@ -144,7 +157,12 @@ const Dashboard: React.FC = () => {
                 <TiCogOutline size={30} style={{ margin: 10 }} />
               </header>
 
-              <input type="text" />
+              <input
+                type="text"
+                placeholder="Pesquise pelo nome do cliente"
+                value={actionPlansSearch}
+                onChange={e => setActionPlansSearch(e.target.value)}
+              />
 
               <select value={actionPlanState} id="status" onChange={e => setActionPlanState(e.target.value)}>
                 <option value="criado">Criado</option>
