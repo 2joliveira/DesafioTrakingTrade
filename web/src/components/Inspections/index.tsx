@@ -1,7 +1,7 @@
-import { isToday } from 'date-fns';
 import React from 'react';
 import Chart from 'react-google-charts';
 import { TiCogOutline } from 'react-icons/ti';
+import { isToday } from 'date-fns';
 
 import { useService } from '../../provider/CreatedServicesContext';
 
@@ -10,8 +10,11 @@ import { Container } from './styles';
 const Inspections: React.FC = () => {
   const service = useService();
 
+  const today = "2021-02-19 16:00:00"
+
   const data = service
-    .filter(day => isToday(new Date(day.created_at)))
+    // .filter(day => isToday(new Date(day.created_at)))
+    .filter(day => day.created_at === today)
     .filter(day => day.service === 'inspecao');
 
   console.log(data);

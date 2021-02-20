@@ -10,13 +10,15 @@ import { Container } from './styles';
 const ActionPlansDetails: React.FC = () => {
   const service = useService();
 
+  const today = "2021-02-19 16:00:00"
+
   const data = service
     .filter(dataweek => {
-      return isToday(new Date(dataweek.created_at));
+      // return isToday(new Date(dataweek.created_at));
+
+      return dataweek.created_at === today;
     })
-    .filter(dataweek => {
-      return dataweek.service === 'planodeacao';
-    });
+    .filter(dataweek => dataweek.service === 'planodeacao');
 
   return (
     <Container>

@@ -1,5 +1,3 @@
-import { eachDayOfInterval } from 'date-fns';
-import { addDays } from 'date-fns/esm';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import api from '../services/api';
 
@@ -11,11 +9,6 @@ interface IServices {
   created_at: string;
   updated_at: string;
 }
-
-// interface IDataContext {
-//   inspections: IServices[];
-//   actionsplan: IServices[];
-// }
 
 const ServiceContext = createContext<IServices[]>([] as IServices[]);
 
@@ -37,14 +30,6 @@ const ServiceProvider: React.FC = ({ children }) => {
 
 function useService(): IServices[] {
   const context = useContext(ServiceContext);
-
-  // const today = new Date();
-
-  // const lastweek = addDays(today, -6);
-
-  // const thisWeek = eachDayOfInterval(
-  //   { start: lastweek, end: today },
-  // );
 
   return context;
 }

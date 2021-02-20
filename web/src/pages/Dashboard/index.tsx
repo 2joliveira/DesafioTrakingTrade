@@ -44,10 +44,14 @@ const Dashboard: React.FC = () => {
   let inspectionsDataShow: IService[] = [];
   let actionPlansDataShow: IService[] = [];
 
+  const today = "2021-02-19 16:00:00"
+
   switch (selectedPeriod) {
     case 'diario':
       inspectionsDataShow = inspectionsData.filter(dataweek => {
-        return isToday(new Date(dataweek.created_at));
+        // return isToday(new Date(dataweek.created_at));
+
+        return dataweek.created_at === today;
       });
       break;
     case 'mensal':

@@ -22,10 +22,14 @@ const EventHistory: React.FC = () => {
 
   let data: IService[] = [];
 
+  const today = "2021-02-19 16:00:00";
+
   switch (selectedPeriod) {
     case 'diario':
       data = services.filter(dataweek => {
-        return isToday(new Date(dataweek.created_at));
+        // return isToday(new Date(dataweek.created_at));
+
+        return dataweek.created_at === today;
       });
       break;
     case 'mensal':
