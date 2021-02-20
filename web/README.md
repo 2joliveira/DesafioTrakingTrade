@@ -1,19 +1,5 @@
 # Desafio TrackingTrade
 
-</p>
-<strong>
-<br>
-
-<p align="center">
-  <a href="#computer-technologies">Technologies</a>
-  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#wrench-tools">Tools</a>
-  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#package-installation">Installation</a>
-  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-license">License</a>
-</p>
-</strong>
 <br>
 
 ## 💻 Technologies
@@ -34,7 +20,7 @@
 - **[Styled-Components](https://styled-components.com/docs)**
 - **[Json-server](https://www.npmjs.com/package/json-server )**
 - **[Rc-scrollbars](https://www.npmjs.com/package/rc-scrollbars)**
-- 
+  
 <br>
 
 ## 🛠 Tools
