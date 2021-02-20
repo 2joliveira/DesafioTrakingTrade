@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Scrollbars } from 'rc-scrollbars';
+import { isThisMonth, isThisYear/*, isToday*/ } from 'date-fns';
 
 import { TiCogOutline } from 'react-icons/ti';
 
 import { useService } from '../../provider/CreatedServicesContext';
 
-import { isThisMonth, isThisYear, isToday } from 'date-fns';
 
 import SideBar from '../../components/SideBar';
 import EventHistory from '../../components/EventHistory';

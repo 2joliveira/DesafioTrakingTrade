@@ -1,7 +1,7 @@
 import React from 'react';
 import Chart from 'react-google-charts';
 import { TiCogOutline } from 'react-icons/ti';
-import { isToday } from 'date-fns';
+// import { isToday } from 'date-fns';
 
 import { useService } from '../../provider/CreatedServicesContext';
 
@@ -16,8 +16,6 @@ const Inspections: React.FC = () => {
     // .filter(day => isToday(new Date(day.created_at)))
     .filter(day => day.created_at === today)
     .filter(day => day.service === 'inspecao');
-
-  console.log(data);
 
   return (
     <Container>
@@ -47,18 +45,20 @@ const Inspections: React.FC = () => {
         <h4>Média de tempo</h4>
 
         <table>
-          <tr>
-            <td>Hoje</td>
-            <td>10 min</td>
-          </tr>
-          <tr>
-            <td>Ultímos 7 dias</td>
-            <td>10 min</td>
-          </tr>
-          <tr>
-            <td>Ultímos 30 dias</td>
-            <td>10 min</td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>Hoje</td>
+              <td>10 min</td>
+            </tr>
+            <tr>
+              <td>Ultímos 7 dias</td>
+              <td>10 min</td>
+            </tr>
+            <tr>
+              <td>Ultímos 30 dias</td>
+              <td>10 min</td>
+            </tr>
+          </tbody>
         </table>
 
       </footer>
