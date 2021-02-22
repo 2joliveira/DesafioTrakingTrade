@@ -125,7 +125,7 @@ export const ActionsplanUpdates = styled.div`
     box-sizing: border-box;
     border-radius: 100px;
     padding-left: 20px;
-    
+
     &:focus {
       outline: none;
       box-shadow: none;
@@ -165,6 +165,11 @@ export const ActionsplanUpdates = styled.div`
 
 export const Input = styled.input<InputProp>`
   display: none;
+  border: none;
+
+  &:focus {
+    border: none;
+  }
 
   ${(prop) =>
     prop.selectDate &&

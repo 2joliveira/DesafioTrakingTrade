@@ -42,6 +42,7 @@ export const Container = styled.div`
     background: #C4C4C4;
     border-radius: 100px;
     padding-left: 20px;
+    border: none;
 
     font-weight: 600;
     font-size: 14px;

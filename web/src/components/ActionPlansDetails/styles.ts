@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { shade } from 'polished';
 
 interface InputProp {
   selectDay: boolean;
@@ -83,6 +84,22 @@ export const Container = styled.div`
 
 export const Input = styled.input<InputProp>`
   display: none;
+
+  margin: 15px;
+  background: #FAFAFA;
+  border: 1px solid #EBEBEB;
+  box-sizing: border-box;
+  border-radius: 100px;
+  padding-left: 20px;
+  
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  
+  &:hover {
+    background-color: ${shade(0.1, '#FAFAFA')};
+  }
 
   ${(prop) =>
     !!prop.selectDay &&

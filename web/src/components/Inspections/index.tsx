@@ -16,7 +16,7 @@ const Inspections: React.FC = () => {
 
   const data = service
     // .filter(day => isToday(new Date(day.created_at)))
-    .filter(day => day.created_at === selectedDay + " 16:00:00")
+    .filter(day => day.created_at.includes(selectedDay))
     .filter(day => day.service === 'inspecao');
 
   return (

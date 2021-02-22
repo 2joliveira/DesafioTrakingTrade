@@ -1,4 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { shade } from 'polished';
+
+interface DivProps {
+  selectService: boolean;
+}
 
 export const Container = styled.div`
   background: #FFFFFF;
@@ -10,6 +15,8 @@ export const Container = styled.div`
   min-width: 347px;
   min-height: 269px;
   margin: 10px;
+
+  position: relative;
 
   header {
     display: flex;
@@ -37,11 +44,49 @@ export const Container = styled.div`
         color: #B0B0B0;
       }
     }
+
+    svg {
+      &:hover {
+        color: ${shade(0.2, '#3333')}
+      }
+    }
   }
 
   div {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+`;
+
+export const SelectService = styled.select<DivProps>`
+  border: none;
+  background: #c4c4c4;
+  height: 30px;
+  width: 120px;
+  border-radius: 50px;
+
+  padding-left: 5px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 21px;
+  color: #333333;
+
+  display: none;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:hover {
+    background-color: ${shade(0.2, '#C4C4C4')};
+  }
+
+  ${(props) =>
+    !!props.selectService &&
+    css`
+      display: flex;
+    `
   }
 `;
