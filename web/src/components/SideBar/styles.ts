@@ -1,13 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 1088px;
-  min-width: 51px;
+  width: 4rem;
 
   background: linear-gradient(180deg, #0DB2D6 8.12%, #4FDA91 71.62%);
-
-  display: flex;
-  flex-direction: row;
 `;
 
 export const ButtonOppen = styled.button`
@@ -23,10 +19,7 @@ export const ButtonOppen = styled.button`
   align-items: center;
   justify-content: center;
 
-  &:focus {
-    outline: none;
-    box-shadow: none;
-  }
+  transition: transform 0.2s;
 
   &:hover {
     transform: translateY(-5px);
@@ -49,10 +42,7 @@ export const CloseNav = styled.button`
 
   background: #0794B3;
 
-  &:focus {
-    outline: none;
-    box-shadow: none;
-  }
+  transition: transform 0.2s;
 
   &:hover {
     transform: translateY(-5px);
@@ -66,6 +56,8 @@ export const Navbar = styled.div`
   background: #FAFAFA;
 
   border: 1px solid #edea;
+
+  position: absolute;
 
   ul {
     display: flex;

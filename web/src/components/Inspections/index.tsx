@@ -7,7 +7,7 @@ import { useService } from '../../provider/CreatedServicesContext';
 
 import { Container, Input } from './styles';
 
-const Inspections: React.FC = () => {
+export const Inspections: React.FC = () => {
   const service = useService();
   const [inputselectDate, setInputSelectDate] = useState(false);
 
@@ -79,5 +79,3 @@ const Inspections: React.FC = () => {
     </Container>
   );
 }
-
-export default Inspections;

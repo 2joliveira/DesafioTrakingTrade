@@ -1,28 +1,17 @@
 import React, { useState } from 'react';
-import { Scrollbars } from 'rc-scrollbars';
-import { isThisMonth, isThisYear/*, isToday*/ } from 'date-fns';
-
-import { TiCogOutline } from 'react-icons/ti';
+import { isThisMonth, isThisYear } from 'date-fns';
 
 import { useService } from '../../provider/CreatedServicesContext';
 
-import SideBar from '../../components/SideBar';
-import EventHistory from '../../components/EventHistory';
-import Actionsplan from '../../components/ActionPlans';
-import Inspections from '../../components/Inspections';
-import ActionPlansDetails from '../../components/ActionPlansDetails';
+import { SideBar } from '../../components/SideBar';
+import { EventHistory } from '../../components/EventHistory';
+import { Overview } from '../../components/Overview';
+import { ActionPlansDetails } from '../../components/ActionPlansDetails';
+import { Inspections } from '../../components/Inspections';
+import { InspectionsDetails } from '../../components/InspectionsDetails';
+import { ActionPlansUpdates } from '../../components/ActionPlansUpdates';
 
-import {
-  Container,
-  DashboardContainer,
-  DashboardMain,
-  Grafos,
-  DashboardActionPlans,
-  Th,
-  ActionsplanUpdates,
-  Input,
-  InspectionsDetails,
-} from './styles';
+import { Container, DashboardContainer } from './styles';
 
 interface IService {
   id: number;
@@ -33,7 +22,7 @@ interface IService {
   updated_at: string;
 }
 
-const Dashboard: React.FC = () => {
+export const Dashboard: React.FC = () => {
   const service = useService();
   const [selectedPeriod, setSelectedPeriod] = useState('diario');
   const [actionPlanState, setActionPlanState] = useState('criado');
@@ -90,127 +79,48 @@ const Dashboard: React.FC = () => {
       break;
   }
 
-
   return (
     <Container>
       <SideBar />
-      <div>
-        <h1>Painel de controle</h1>
-        <DashboardContainer>
-          <DashboardMain>
-            <EventHistory />
 
-            <Grafos>
-              <Inspections />
-              <ActionPlansDetails />
-            </Grafos>
+      <DashboardContainer>
+        <div>
+          <h1>Painel de Controle</h1>
 
-            <InspectionsDetails>
-              <header>
-                <h3>Inspeções agendadas</h3>
+          <EventHistory />
 
-                <select value={selectedPeriod} id="inspections" onChange={e => setSelectedPeriod(e.target.value)}>
-                  <option value="diario">diário</option>
-                  <option value="mensal">mensal</option>
-                  <option value="anual">anual</option>
-                </select>
-              </header>
+          <section>
+            <ActionPlansDetails />
 
-              <input
-                type="text"
-                placeholder="Pesquise"
-                value={inspectionsSearch}
-                onChange={e => setInspectionsSearch(e.target.value)}
-              />
+            <Inspections />
+          </section>
 
-              <Scrollbars style={{ margin: '20px' }}>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>NOME</th>
-                      <th>CRIADO</th>
-                      <th>STATUS</th>
-                      <th>ULTIMA ATUALIZAÇÃO</th>
-                    </tr>
-                  </thead>
+          <InspectionsDetails
+            selectedPeriod={selectedPeriod}
+            setSelectedPeriod={setSelectedPeriod}
+            inspectionsSearch={inspectionsSearch}
+            setInspectionsSearch={setInspectionsSearch}
+            inspectionsDataShow={inspectionsDataShow}
+          />
+        </div>
 
-                  <tbody>
-                    {inspectionsDataShow.map(data => {
-                      return (
-                        <tr key={data.id}>
-                          <td>{data.user}</td>
-                          <td>{data.created_at}</td>
-                          <td>{data.state}</td>
-                          <td>{data.updated_at}</td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </Scrollbars>
-            </InspectionsDetails>
-          </DashboardMain>
+        <div>
+          <Overview />
 
-          <DashboardActionPlans>
-            <Actionsplan />
+          <ActionPlansUpdates
+            selectDate={selectDate}
+            selectedDay={selectedDay}
+            setSelectedDay={setSelectedDay}
+            setSelectDate={setSelectDate}
+            actionPlansSearch={actionPlansSearch}
+            setActionPlansSearch={setActionPlansSearch}
+            actionPlanState={actionPlanState}
+            setActionPlanState={setActionPlanState}
+            actionPlansDataShow={actionPlansDataShow}
+          />
+        </div>
+      </DashboardContainer>
 
-            <ActionsplanUpdates>
-              <header>
-                <h3>Planos de ação <span>atualizações</span></h3>
-
-                <Input
-                  type="date"
-                  selectDate={selectDate}
-                  value={selectedDay}
-                  onChange={e => setSelectedDay(e.target.value)}
-                />
-
-                <TiCogOutline
-                  size={30}
-                  style={{ margin: 10 }}
-                  onClick={e => setSelectDate(!selectDate)}
-                />
-              </header>
-
-              <input
-                type="text"
-                placeholder="Pesquise pelo nome do cliente"
-                value={actionPlansSearch}
-                onChange={e => setActionPlansSearch(e.target.value)}
-              />
-
-              <select value={actionPlanState} id="status" onChange={e => setActionPlanState(e.target.value)}>
-                <option value="criado">Criado</option>
-                <option value="finalizado">Finalizado</option>
-                <option value="pendente">Pendente</option>
-              </select>
-
-              <Scrollbars style={{ height: '470px' }}>
-                <section>
-                  {actionPlansDataShow.map(actionplan => {
-                    return (
-                      <table key={actionplan.id}>
-                        <thead>
-                          <tr>
-                            <Th>{actionplan.service}</Th>
-                            <Th statusColor={actionplan.state}>{actionplan.state.toUpperCase()}</Th>
-                          </tr>
-                          <tr>
-                            <td>responsável: {actionplan.user}</td>
-                            <td>{actionplan.updated_at}</td>
-                          </tr>
-                        </thead>
-                      </table>
-                    );
-                  })}
-                </section>
-              </Scrollbars>
-            </ActionsplanUpdates>
-          </DashboardActionPlans>
-        </DashboardContainer>
-      </div>
     </Container>
   );
 }
-
-export default Dashboard;

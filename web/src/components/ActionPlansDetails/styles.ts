@@ -6,8 +6,8 @@ interface InputProp {
 }
 
 export const Container = styled.div`
-  min-width: 354px;
-  min-height: 328px;
+  width: 350px;
+  height: 328px;
 
   margin: 10px;
 
@@ -18,11 +18,12 @@ export const Container = styled.div`
   border-radius: 5px;
 
   header {
+    width: 100%;
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     margin: 10px;
+    padding: 0 10px;
 
     h3 {
       font-family: Poppins;

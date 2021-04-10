@@ -12,18 +12,22 @@ export const Container = styled.div`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
 
-  min-width: 347px;
-  min-height: 269px;
+  width: 350px;
+  height: 269px;
   margin: 10px;
 
-  position: relative;
+  margin-top: 35px;
+
+  @media (max-width: 1176px) {
+    margin-top: 0;
+  }
 
   header {
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin: 10px;
 
     h3 {
       font-family: Poppins;
@@ -35,6 +39,8 @@ export const Container = styled.div`
 
       display: flex;
       flex-direction: column;
+
+      margin-left: 10px;
 
       span {
         font-style: normal;

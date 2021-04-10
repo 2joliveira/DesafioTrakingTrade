@@ -7,7 +7,7 @@ import { useService } from '../../provider/CreatedServicesContext';
 
 import { Container, Input } from './styles';
 
-const ActionPlansDetails: React.FC = () => {
+export const ActionPlansDetails: React.FC = () => {
   const service = useService();
   const [inputselectDate, setInputSelectDate] = useState(false);
 
@@ -80,5 +80,3 @@ const ActionPlansDetails: React.FC = () => {
 
   );
 }
-
-export default ActionPlansDetails;

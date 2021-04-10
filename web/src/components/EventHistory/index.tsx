@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TiCogOutline, TiMediaRecordOutline } from 'react-icons/ti';
+import { TiMediaRecordOutline } from 'react-icons/ti';
 import Chart from 'react-google-charts';
 import { isThisMonth, isThisYear/*, isToday*/ } from 'date-fns';
 
@@ -16,7 +16,7 @@ interface IService {
   updated_at: string;
 }
 
-const EventHistory: React.FC = () => {
+export const EventHistory: React.FC = () => {
   const services = useService();
   const [selectedPeriod, setSelectedPeriod] = useState('diario');
 
@@ -62,13 +62,11 @@ const EventHistory: React.FC = () => {
           <option value="mensal">mensal</option>
           <option value="anual">anual</option>
         </select>
-
-        <TiCogOutline size={30} style={{ margin: 10 }} />
       </header>
 
       <div>
         <Chart
-          width={600}
+          width={'30rem'}
           height={155}
           chartType="ColumnChart"
           loader={<div>Loading Chart</div>}
@@ -92,5 +90,3 @@ const EventHistory: React.FC = () => {
     </Container>
   );
 }
-
-export default EventHistory;

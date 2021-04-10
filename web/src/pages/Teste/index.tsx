@@ -1,15 +1,11 @@
-import React from 'react';
+import { SideBar } from '../../components/SideBar';
 
-import SideBar from '../../components/SideBar';
-
-const Teste: React.FC = () => {
+export function Teste() {
   return (
-    <div style={{ display: 'flex', flexDirection: 'row' }}>
+    <main style={{ display: 'flex', height: '100%' }}>
       <SideBar />
 
-      <h1 style={{ fontSize: '50px' }}>Testando</h1>
-    </div>
+      <h1 style={{ width: '100%', textAlign: 'center'}} >Testando</h1>
+    </main>
   );
 }
-
-export default Teste;

@@ -2,10 +2,8 @@ import styled from 'styled-components';
 import { shade } from 'polished';
 
 export const Container = styled.div`
-  min-width: 738px;
-  min-height: 266px;
-
-  margin: 10px;
+  width: 45rem;
+  height: 270px;
 
   display: flex;
   flex-direction: column;
@@ -16,11 +14,16 @@ export const Container = styled.div`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
 
+  @media (max-width: 730px) {
+    width: 30rem;
+  }
+
   header {
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
   }
   
   label {
@@ -38,7 +41,6 @@ export const Container = styled.div`
     width: 244px;
     height: 28px;
     margin: 15px;
-    margin-left: 30%;
     background: #C4C4C4;
     border-radius: 100px;
     padding-left: 20px;

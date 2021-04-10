@@ -6,7 +6,7 @@ import { useService } from '../../provider/CreatedServicesContext';
 
 import { Container, SelectService } from './styles';
 
-const ActionPlans: React.FC = () => {
+export const Overview: React.FC = () => {
   const context = useService();
 
   const [selectService, setSelectService] = useState(false);
@@ -67,5 +67,3 @@ const ActionPlans: React.FC = () => {
     </Container>
   );
 }
-
-export default ActionPlans;

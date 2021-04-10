@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { Container, Navbar, CloseNav, ButtonOppen } from './styles';
 
-const SideBar: React.FC = () => {
+export const SideBar: React.FC = () => {
   const [showNav, setShowNav] = useState(false);
 
   function handleShowNavbar() {
@@ -45,5 +45,3 @@ const SideBar: React.FC = () => {
     </Container>
   );
 }
-
-export default SideBar;
